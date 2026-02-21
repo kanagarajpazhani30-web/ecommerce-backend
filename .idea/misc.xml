@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/cart-api-service/cart-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/user-api-service/user-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/order-api-service/order-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-api-service/payment-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/product-api-service/product-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/inventory-api-service/inventory-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/notification-api-service/notification-api-service/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-server/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway-service/api-gateway-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="ms-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

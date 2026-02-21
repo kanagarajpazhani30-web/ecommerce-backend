@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: order-api-service
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/ecommerce?sslMode=DISABLED&allowPublicKeyRetrieval=true&useServerPrepareStatement=true
+    username: root
+    password: pass
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    properties:
+      spring.json.add.type.headers: false
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 6000
+
+server:
+  port: 8091
+
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
+    dev.miku.r2dbc.mysql: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventoryService:
+        failure-rate-threshold: 50
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        wait-duration-in-open-state: 10s
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
