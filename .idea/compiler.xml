@@ -10,20 +10,29 @@
         <module name="eureka-server" />
         <module name="api-gateway-service" />
       </profile>
-      <profile name="Annotation profile for order-api-service" enabled="true">
+      <profile name="Annotation profile for product-api-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
-        <module name="user-api-service" />
         <module name="notification-api-service" />
         <module name="inventory-api-service" />
         <module name="product-api-service" />
         <module name="cart-api-service" />
         <module name="order-api-service" />
         <module name="payment-api-service" />
+      </profile>
+      <profile name="Annotation profile for user-api-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="user-api-service" />
       </profile>
     </annotationProcessing>
   </component>
