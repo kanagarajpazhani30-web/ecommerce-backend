@@ -20,30 +20,6 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
-    // ✅ Extract username (email)
-    public String getUsernameFromToken(String token) {
-        return getClaims(token).getSubject();
-    }
-
-    // ✅ Validate token
-    public boolean validateToken(String token) {
-        try {
-            getClaims(token); // will throw exception if invalid
-            return true;
-        } catch (JwtException | IllegalArgumentException e) {
-            return false;
-        }
-    }
-
-    // ✅ Extract all claims
-    private Claims getClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
     public String generateToken(String username) {
 
         return Jwts.builder()

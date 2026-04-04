@@ -22,8 +22,7 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(
             ServerHttpSecurity http,
-            JwtAuthenticationManager authenticationManager,
-            JwtSecurityContextRepository securityContextRepository
+            JwtAuthenticationManager authenticationManager
     ) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
@@ -32,7 +31,6 @@ public class WebSecurityConfiguration {
                         .anyExchange().authenticated()
                 )
                 .authenticationManager(authenticationManager)
-                .securityContextRepository(securityContextRepository)
                 .build();
     }
 }
