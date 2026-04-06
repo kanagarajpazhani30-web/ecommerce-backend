@@ -11,13 +11,21 @@ spring:
             - Path=/product/**
           filters:
             - StripPrefix=1
-            
+
         - id: order-service
           uri: lb://ORDER-API-SERVICE
           predicates:
             - Path=/order/**
           filters:
-              - StripPrefix=1
+            - StripPrefix=1
+
+        # ✅ ADD THIS
+        - id: user-service
+          uri: lb://USER-API-SERVICE
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
 
 server:
   port: 9090
