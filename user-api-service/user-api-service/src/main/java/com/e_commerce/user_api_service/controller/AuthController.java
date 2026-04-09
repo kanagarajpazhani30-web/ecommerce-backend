@@ -6,6 +6,7 @@ import com.e_commerce.user_api_service.config.JwtUtil;
 import com.e_commerce.user_api_service.dto.LoginRequestDTO;
 import com.e_commerce.user_api_service.dto.RegisterRequest;
 import com.e_commerce.user_api_service.model.User;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public Mono<ResponseEntity<?>> register(@RequestBody RegisterRequest request) {
+    public Mono<ResponseEntity<?>> register(@RequestBody @Valid RegisterRequest request) {
 
         return userService.register(request)
                 .map(user -> ResponseEntity.ok("Registered successfully.."));
