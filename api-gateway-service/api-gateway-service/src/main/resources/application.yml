@@ -19,7 +19,6 @@ spring:
           filters:
             - StripPrefix=1
 
-        # ✅ ADD THIS
         - id: user-service
           uri: lb://USER-API-SERVICE
           predicates:
@@ -29,14 +28,9 @@ spring:
 
 server:
   port: 9090
+  address: 0.0.0.0
 
 eureka:
-  instance:
-    prefer-ip-address: true
-    ip-address: 127.0.0.1
-    hostname: localhost
-    instance-id: ${spring.application.name}:${server.port}
-
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/

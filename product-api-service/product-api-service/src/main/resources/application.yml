@@ -1,9 +1,9 @@
 spring:
   application:
-    name: product-api-service
+    name: PRODUCT-API-SERVICE
 
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/ecommerce?sslMode=DISABLED&allowPublicKeyRetrieval=true&useServerPrepareStatement=true
+    url: r2dbc:mysql://host.docker.internal:3306/ecommerce?sslMode=DISABLED&allowPublicKeyRetrieval=true&useServerPrepareStatement=true
     username: root
     password: pass
 
@@ -13,11 +13,10 @@ spring:
       platform: mysql
 
   redis:
-    host: localhost
+    host: host.docker.internal
     port: 6379
     database: 0
     timeout: 6000
-    password: ""   # keep empty if no password
 
 logging:
   level:
@@ -26,16 +25,9 @@ logging:
 
 server:
   port: 8090
+  address: 0.0.0.0
 
 eureka:
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
-
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-
-
-
+      defaultZone: http://eureka-server:8761/eureka/

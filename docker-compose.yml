@@ -1,0 +1,84 @@
+services:
+
+  eureka-server:
+    build: ./eureka-server/eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - ecommerce-network
+
+  api-gateway:
+    build: ./api-gateway-service/api-gateway-service
+    ports:
+      - "9090:9090"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  user-service:
+    build: ./user-api-service/user-api-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  product-service:
+    build: ./product-api-service/product-api-service
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  order-service:
+    build: ./order-api-service/order-api-service
+    ports:
+      - "8091:8091"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  inventory-service:
+    build: ./inventory-api-service/inventory-api-service
+    ports:
+      - "8092:8092"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  payment-service:
+    build: ./payment-api-service/payment-api-service
+    ports:
+      - "8093:8093"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  cart-service:
+    build: ./cart-api-service/cart-api-service
+    ports:
+      - "8094:8094"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+  notification-service:
+    build: ./notification-api-service/notification-api-service
+    ports:
+      - "8095:8095"
+    depends_on:
+      - eureka-server
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
